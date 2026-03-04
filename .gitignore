@@ -1,0 +1,29 @@
+# Environments
+.venv/
+.env
+
+# Cache
+__pycache__/
+
+# Output folders
+runs/
+
+# Large binaries, models, and weights
+*.pt
+*.pth
+*.mdl
+*.ie
+*.dubm
+*.mat
+*.stats
+*.conf
+*.int
+*.fst
+
+# Other generated/large files
+*.mp3
+*.jpg
+*.jpeg
+*.png
+data/
+*.tar.gz

@@ -1,0 +1,6 @@
+path: /home/manrig-13/PycharmProjects/my_jarvis/cigar_project # Your absolute path
+train: images
+val: images # For now, we use the same for training
+
+names:
+  0: cigar

@@ -1,0 +1,5 @@
+{
+    "python.defaultInterpreterPath": "/home/manrig-13/Antigravity/my_jarvis/.venv/bin/python3",
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": true
+}
