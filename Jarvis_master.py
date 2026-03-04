@@ -26,6 +26,7 @@ current_spatial_dist = "Searching..."
 
 GMAIL_USER = os.environ.get("GMAIL_USER")
 GMAIL_APP_PW = os.environ.get("GMAIL_APP_PW")
+OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
 
 # --- 2. VOICE WORKER (The Butler Thread) ---
 speech_queue = queue.Queue()
@@ -58,7 +59,7 @@ def speak(text):
 config = {
     "llm": {
         "provider": "ollama",
-        "config": {"model": "llama3.2", "ollama_base_url": "http://192.168.1.24:11434"}
+        "config": {"model": "llama3.2", "ollama_base_url": OLLAMA_BASE_URL}
     },
     "embedder": {
         "provider": "huggingface",
@@ -90,7 +91,7 @@ audio_queue = queue.Queue()
 # Without this, the first recipe/shopping command triggers a cold model load (can take minutes)
 print("🔥 Warming up AI brain on Ubuntu server (this may take 1-2 minutes on first run)...")
 try:
-    _warmup = requests.post('http://192.168.1.24:11434/api/generate',
+    _warmup = requests.post(f'{OLLAMA_BASE_URL}/api/generate',
                             json={'model': 'llama3.2', 'prompt': 'Hello.', 'stream': False},
                             timeout=300)
     if _warmup.status_code == 200:
@@ -169,7 +170,7 @@ def find_recipe(query):
     speak(f"Consulting the AI chef for {query}.")
     try:
         print(f"🌐 Contacting Ubuntu server for recipe: {query}...")
-        response = requests.post('http://192.168.1.24:11434/api/generate', json={
+        response = requests.post(f'{OLLAMA_BASE_URL}/api/generate', json={
             'model': 'llama3.2', 
             'prompt': f'Correct any obvious speech-to-text typos in the item name. Then, give me a clear, step-by-step recipe for {query} with a list of ingredients and baking/cooking instructions. Keep it concise.', 
             'stream': False
@@ -210,7 +211,7 @@ def find_best_prices(query):
             f"EXCLUDE: powdered, liquid, substitute, easter, artificial"
         )
         print(f"🌐 Contacting Ubuntu server to categorize item: {query}...")
-        cat_resp = requests.post('http://192.168.1.24:11434/api/generate', json={'model': 'llama3.2', 'prompt': cat_prompt, 'stream': False}, timeout=180)
+        cat_resp = requests.post(f'{OLLAMA_BASE_URL}/api/generate', json={'model': 'llama3.2', 'prompt': cat_prompt, 'stream': False}, timeout=180)
         print(f"✅ Category response received (status {cat_resp.status_code}).")
         
         corrected_query = query
@@ -276,7 +277,7 @@ def find_best_prices(query):
         )
         
         print(f"🌐 Contacting Ubuntu server to generate shopping report...")
-        response = requests.post('http://192.168.1.24:11434/api/generate', json={
+        response = requests.post(f'{OLLAMA_BASE_URL}/api/generate', json={
             'model': 'llama3.2', 
             'prompt': prompt, 
             'stream': False
