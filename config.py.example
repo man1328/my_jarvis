@@ -1,0 +1,12 @@
+# Example configuration file.
+# Rename this file to 'config.py' and add your actual values.
+# config.py is gitignored and will NEVER be committed to GitHub.
+#
+# NOTE: This project now uses keys_loader.py + .env for credentials.
+# config.py is kept as an optional override for local path customization.
+
+PATHS = {
+    "CHROMA_DB": "./chroma_db",
+    "DATASETS": "./data",
+    "VOSK_MODEL": "./model",
+}

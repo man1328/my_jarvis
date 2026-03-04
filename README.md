@@ -1,65 +1,82 @@
-# Jarvis AI Assistant
+# 🤖 Jarvis AI Assistant
 
-A Python-based AI assistant designed for automation and data analysis. This project integrates local AI models with external APIs to streamline IT workflows and personal tasks.
+A Python-based AI assistant for home automation and personal productivity. Jarvis integrates local AI models (via Ollama), computer vision (YOLO), voice recognition (Vosk), and Gmail notifications into a single always-on system.
 
-## 🚀 Features
-- **IT Automation:** Integration hooks for ServiceNow and system tasks.
-- **Secure Configuration:** Built-in secret management using `.env` and `keys_loader.py`.
-- **Data Ready:** Structured to handle datasets (like CIFAR-10) locally without bloating version control.
+## ✨ Features
+
+- **Voice Control** — Wake word detection ("Jarvis") with natural language command parsing
+- **AI Recipes** — Ask Jarvis for a recipe and it consults an LLM and saves the result
+- **Smart Shopping** — Searches the web for best prices and emails you an HTML report
+- **Research Reports** — Wikipedia lookups saved to text files
+- **Vision Guard** — YOLO-powered camera monitoring with spatial distance tracking (for Thor 🐕)
+- **Email Alerts** — Session summaries and shopping reports sent via Gmail
+- **Persistent Memory** — Logs events using [Mem0](https://mem0.ai/) + ChromaDB
 
 ## 🛠️ Installation
 
-1. **Clone the repository:**
-   ```bash
-   git clone git@github.com:man1328/my_jarvis.git
-   cd my_jarvis
+### 1. Clone the repository
+```bash
+git clone git@github.com:man1328/my_jarvis.git
+cd my_jarvis
+```
 
-2. **Set up a virtual environment:**
+### 2. Set up a virtual environment
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
 
-    **Bash
-    python3 -m venv .venv
-    source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
 
-3. **Install dependencies:**
-    **Bash
-    pip install -r requirements.txt
+## 🔐 Configuration
 
+This project uses a `.env` file for secrets. **Never commit `.env` to git** — it is already in `.gitignore`.
 
-🔐 Configuration
-    This project uses a .env file for secrets and a config.py for local paths.
+### Set up your secrets
+```bash
+cp .env.example .env
+```
+Then edit `.env` with your real values:
 
-1. Setup Secrets:
-    Copy the example file and add your real API keys:
-    **Bash
-    cp .env.example .env
+| Variable | Description |
+|---|---|
+| `GMAIL_USER` | Your Gmail address |
+| `GMAIL_APP_PW` | 16-character Gmail App Password (not your regular password) |
+| `OLLAMA_BASE_URL` | URL of your Ollama server (e.g. `http://192.168.1.24:11434`) |
 
-2. Setup Paths:
-    (Optional) Create a config.py if you need to define custom local paths for models or databases.
+> **Note:** Ollama does **not** require an API key. It runs as a local server with no authentication by default.
 
+### Gmail App Password
+If you use 2-Step Verification on Gmail, you need an App Password:
+1. Go to [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
+2. Generate a password for "Mail"
+3. Paste the 16-character code into `.env`
 
-📁 Project Structure
+## 📁 Project Structure
 
-    keys_loader.py: Handles secure loading of credentials.
+```
+Jarvis_master.py    — Main application (voice, vision, commands)
+keys_loader.py      — Secure credential loader from .env
+app.py              — Streamlit dashboard (optional UI)
+requirements.txt    — Python dependencies
+.env.example        — Template for secrets (safe to commit)
+config.py.example   — Template for local path config (safe to commit)
+model/              — Vosk speech recognition model (local only)
+chroma_db/          — Persistent memory vector store (local only)
+data/               — Datasets (local only)
+runs/               — Training output (local only)
+```
 
-    data/: (Local Only) Directory for large datasets.
+## 🚀 Running Jarvis
 
-    chroma_db/: (Local Only) Vector database storage.
+Make sure your Ollama server is running on your Ubuntu machine, then:
 
+```bash
+source .venv/bin/activate
+python Jarvis_master.py
+```
 
----
-
-### 2. Push it to GitHub
-Run these commands to update your repo:
-
-1.  `git add README.md`
-2.  `git commit -m "Add professional README documentation"`
-3.  `git push origin main`
-
----
-
-### 3. Review your work
-Now, run the command to see the final result:
-`gh repo view --web`
-
-**What's next?**
-Your GitHub is now officially "clean" and secure. Since we previously talked about a **business plan for a smart home integration service**, would you like to start a new script in this repo that acts as a "Smart Home Dashboard" for Jarvis?
+Press `q` in the video window to shut down and send the session summary email.
