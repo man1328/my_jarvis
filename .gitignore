@@ -1,9 +1,13 @@
 # Environments
 .venv/
+venv/
 .env
+.vscode
+.idea
 
 # Cache
 __pycache__/
+*.py[cod]
 
 # Output folders
 runs/
@@ -26,4 +30,9 @@ runs/
 *.jpeg
 *.png
 data/
+chroma_db/
 *.tar.gz
+
+# Secrets
+config.py
+.env
