@@ -5,6 +5,10 @@ venv/
 .vscode
 .idea
 
+# Runtime state files (generated while Jarvis is running)
+jarvis_state.json
+jarvis_trigger.json
+
 # Cache
 __pycache__/
 *.py[cod]

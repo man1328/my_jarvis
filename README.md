@@ -80,3 +80,54 @@ python Jarvis_master.py
 ```
 
 Press `q` in the video window to shut down and send the session summary email.
+
+## 📊 Live Dashboard
+
+Run the Streamlit dashboard in a **second terminal** while Jarvis is running:
+
+```bash
+source .venv/bin/activate
+streamlit run jarvis_dashboard.py
+```
+
+Open **[http://localhost:8501](http://localhost:8501)** in your browser. The dashboard:
+
+- Shows live session stats (uptime, cigars logged, Thor alerts, spatial distance)
+- Displays a scrolling command log of everything Jarvis heard
+- Lets you trigger **Recipe**, **Shopping**, **Research**, and **Log Cigar** with buttons — no voice needed
+- Auto-refreshes every 3 seconds
+
+> The dashboard communicates with Jarvis via `jarvis_state.json` (Jarvis → dashboard) and `jarvis_trigger.json` (dashboard → Jarvis). Both files are gitignored.
+
+
+Next steps:
+- 🗺️ Proposed Next Steps for Jarvis
+Here's what I'd prioritize, roughly in order of impact:
+
+🥇 High Impact (Do These Next)
+1. Live Dashboard (Streamlit) The current 
+
+app.py
+ is an unrelated MNIST demo. Jarvis deserves a real dashboard showing:
+
+Live camera feed from the vision guard
+Command log ("last heard" / "last action")
+Cigar & Thor alert counts for the session
+Quick-fire buttons to trigger shopping/recipe/research without voice
+2. Weather + Time Briefing on Startup When Jarvis says "Systems online" at startup, have it also announce: the time, today's weather, and any outstanding memory events from Mem0. Makes it feel much more like a real assistant.
+
+3. Smarter Wake Word Handling Right now the wake word list includes fuzzy matches ("garbage", "harvest") because Vosk mishears "Jarvis." A better fix is to fine-tune the Vosk vocabulary or add a secondary fuzzy-match score so false positives are reduced.
+
+🥈 Good Additions (After the Above)
+4. Scheduled / Recurring Tasks Use schedule or APScheduler to let Jarvis do things on a timer — e.g., "Every morning at 8am, check the weather and email me" or "Remind me every 30 mins if Thor is near cigars."
+
+5. Voice Command: "What did I do today?" Query Mem0 for today's logged events and have Jarvis read them back. The memory system is already wired up but barely used.
+
+6. ServiceNow Integration The config already has a placeholder SERVICENOW_PW. If you use ServiceNow at work, Jarvis could open/close tickets or report on queue counts by voice.
+
+🥉 Longer Term
+7. Multi-camera Support Extend the vision guard to handle more than one camera — e.g., a second camera in another room.
+
+8. Text-to-Image (Stable Diffusion) Since the Ubuntu server already has GPU power, hook up a Stable Diffusion endpoint so Jarvis can generate images on command ("Show me a diagram of...")
+
+My top recommendation: Start with the Streamlit dashboard — it's the most immediately useful, makes everything Jarvis does visible, and would also let you control him from your phone or another machine on the network. Want me to build that?

@@ -1,4 +1,5 @@
 import os, sys, cv2, threading, time, json, queue, smtplib, math
+from difflib import SequenceMatcher
 import pyttsx3
 import pyaudio
 from datetime import datetime
@@ -24,9 +25,52 @@ session_start_time = time.time()
 last_thor_warning = 0
 current_spatial_dist = "Searching..."
 
+
 GMAIL_USER = os.environ.get("GMAIL_USER")
 GMAIL_APP_PW = os.environ.get("GMAIL_APP_PW")
 OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
+
+# --- SHARED STATE (written to disk so the Streamlit dashboard can read it) ---
+STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "jarvis_state.json")
+CMD_FILE   = os.path.join(os.path.dirname(os.path.abspath(__file__)), "jarvis_trigger.json")
+command_log = []
+
+def write_state():
+    """Atomically write current session state to jarvis_state.json."""
+    global cigar_count_session, thor_alert_count, latest_command, current_spatial_dist, command_log
+    state = {
+        "status": "online",
+        "uptime_mins": round((time.time() - session_start_time) / 60, 1),
+        "latest_command": latest_command,
+        "cigar_count": cigar_count_session,
+        "thor_alerts": thor_alert_count,
+        "spatial_dist": current_spatial_dist,
+        "command_log": command_log[-20:],
+        "last_updated": time.strftime("%Y-%m-%dT%H:%M:%S")
+    }
+    try:
+        tmp = STATE_FILE + ".tmp"
+        with open(tmp, "w") as f:
+            json.dump(state, f)
+        os.replace(tmp, STATE_FILE)
+    except Exception as e:
+        print(f"State write error: {e}")
+
+
+# --- SMARTER WAKE WORD ---
+# Known Vosk mishears of "Jarvis" kept as a fast-path allow-list
+_VOSK_ALIASES = {"jarvis", "travis", "jarvas", "jarvish"}
+_WAKE_SIMILARITY_THRESHOLD = 0.72  # 0–1; higher = stricter
+
+def is_wake_word(cmd: str) -> bool:
+    """Return True if any word in cmd is close enough to 'jarvis'."""
+    for word in cmd.lower().split():
+        if word in _VOSK_ALIASES:
+            return True
+        score = SequenceMatcher(None, word, "jarvis").ratio()
+        if score >= _WAKE_SIMILARITY_THRESHOLD:
+            return True
+    return False
 
 # --- 2. VOICE WORKER (The Butler Thread) ---
 speech_queue = queue.Queue()
@@ -345,9 +389,7 @@ def voice_listener():
     is_awake = False
     awake_time = 0
     AWAKE_DURATION = 12  # seconds Jarvis listens after hearing his name
-    
-    # Lenient trigger words in case "Jarvis" isn't heard perfectly
-    trigger_words = ["jarvis", "garbage", "service", "travis", "drivers", "harvest"]
+
     action_words = ["search for", "research", "look up", "recipe for", "how to cook", "how to bake", "record", "log", "save", "report", "status", "update", "close", "finish", "end", "stop", "shop for", "buy ", "find prices for "]
 
     while True:
@@ -356,36 +398,37 @@ def voice_listener():
             res = json.loads(rec.Result())
             cmd = res.get('text', '').lower()
             if cmd:
-                print(f"🗣️  Heard: {cmd}") # Debug print so you know what vosk heard
-                
+                print(f"🗣️  Heard: {cmd}")  # Debug print so you know what vosk heard
+
             # Check if wake word logic timed out
             if is_awake and (time.time() - awake_time > AWAKE_DURATION):
                 is_awake = False
                 print("💤 Jarvis drifted back to sleep.")
                 speak("Going back to sleep.")
-                
-            # If we hear the wake word, wake him up!
-            if any(t in cmd for t in trigger_words):
+
+            # If we hear the wake word, wake him up! (uses similarity scorer, not static list)
+            if is_wake_word(cmd):
                 # Don't say "Yes sir" repeatedly if he's already awake
                 if not is_awake:
                     speak("Yes, sir?")
                 is_awake = True
                 awake_time = time.time()
                 print("🚨 JARVIS IS AWAKE AND LISTENING")
-            
+
             # Now, only process actions IF he is awake
             if is_awake and any(a in cmd for a in action_words):
                 latest_command = cmd
+                command_log.append(f"[{time.strftime('%H:%M:%S')}] {cmd}")
                 print(f"🔊 Command Received: {cmd}")
-                
+
                 # We consume the command, so go back to sleep
                 is_awake = False
 
                 if any(k in cmd for k in ["record", "log", "save"]):
-                    # Safely processes on CPU now
                     m.add("Manual Cigar Log", user_id="ethan")
                     cigar_count_session += 1
                     speak("Logged to memory, sir.")
+                    write_state()
 
                 elif any(k in cmd for k in ["report", "status", "update"]):
                     speak(f"Distance to Thor is {current_spatial_dist}. You have {cigar_count_session} logs today.")
@@ -445,6 +488,41 @@ def voice_listener():
 threading.Thread(target=voice_listener, daemon=True).start()
 
 
+# --- 7. DASHBOARD TRIGGER POLLER ---
+def trigger_poller():
+    """Poll jarvis_trigger.json for commands sent from the Streamlit dashboard."""
+    global cigar_count_session
+    last_ts = 0
+    while True:
+        try:
+            if os.path.exists(CMD_FILE):
+                with open(CMD_FILE) as f:
+                    payload = json.load(f)
+                ts = payload.get("ts", 0)
+                if ts > last_ts:   # new trigger
+                    last_ts = ts
+                    action = payload.get("action", "")
+                    query  = payload.get("query", "")
+                    print(f"📲 Dashboard trigger: {action} → {query}")
+                    if action == "recipe":
+                        threading.Thread(target=find_recipe, args=(query,), daemon=True).start()
+                    elif action == "shop":
+                        threading.Thread(target=find_best_prices, args=(query,), daemon=True).start()
+                    elif action == "research":
+                        threading.Thread(target=conduct_research, args=(query,), daemon=True).start()
+                    elif action == "log_cigar":
+                        m.add("Dashboard Cigar Log", user_id="ethan")
+                        cigar_count_session += 1
+                        speak("Cigar logged from dashboard, sir.")
+                        write_state()
+        except Exception as e:
+            print(f"Trigger poll error: {e}")
+        time.sleep(1)
+
+
+threading.Thread(target=trigger_poller, daemon=True).start()
+
+
 # --- 6. MAIN VISION PROTOCOL ---
 def start_protocol():
     global last_thor_warning, thor_alert_count, current_spatial_dist
@@ -494,12 +572,17 @@ def start_protocol():
                         speak("Thor is getting too close.")
                         cv2.imwrite("best_capture.jpg", frame)
                         last_thor_warning = time.time()
+                        write_state()
 
         # HUD
         cv2.rectangle(frame, (0, 0), (450, 160), (0, 0, 0), -1)
         cv2.putText(frame, f"SPATIAL DIST: {current_spatial_dist}", (10, 40), 0, 0.7, (0, 255, 255), 2)
         cv2.putText(frame, f"CIGARS LOGGED: {cigar_count_session}", (10, 80), 0, 0.7, (255, 255, 255), 1)
         cv2.putText(frame, f"COMMAND: {latest_command[:25]}", (10, 120), 0, 0.6, (0, 255, 0), 1)
+
+        # Write state every ~90 frames (~3 seconds) for the dashboard
+        if frame_count % 90 == 0:
+            write_state()
 
         cv2.imshow("Jarvis Master", frame)
         if cv2.waitKey(1) & 0xFF == ord('q'): break
