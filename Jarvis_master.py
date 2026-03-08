@@ -75,19 +75,29 @@ def is_wake_word(cmd: str) -> bool:
 # --- 2. VOICE WORKER (The Butler Thread) ---
 speech_queue = queue.Queue()
 
+# Self-mute: timestamp until which the voice listener should ignore input
+# (prevents Jarvis from hearing his own TTS through the microphone)
+_speak_cooldown_until = 0.0
+
 
 def voice_worker():
+    global _speak_cooldown_until
     engine = pyttsx3.init()
     engine.setProperty('rate', 165)
     while True:
         text = speech_queue.get()
         if text is None: break
         try:
+            # Estimate speech duration: ~2.75 words/sec at 165wpm, +1s buffer
+            word_count = len(text.split())
+            estimated_secs = max(3.0, (word_count / 2.75) + 1.0)
+            _speak_cooldown_until = time.time() + estimated_secs
             engine.say(text)
             engine.runAndWait()
         except:
             pass
-        speech_queue.task_done()
+        finally:
+            speech_queue.task_done()
 
 
 threading.Thread(target=voice_worker, daemon=True).start()
@@ -132,18 +142,28 @@ rec = KaldiRecognizer(vosk_model, 16000)
 audio_queue = queue.Queue()
 
 # --- WARM UP OLLAMA on the remote server so model is in RAM ---
-# Without this, the first recipe/shopping command triggers a cold model load (can take minutes)
-print("🔥 Warming up AI brain on Ubuntu server (this may take 1-2 minutes on first run)...")
+# Quick reachability check (5s) so we know immediately if the server is down
+print("🔌 Checking AI brain connectivity...")
 try:
-    _warmup = requests.post(f'{OLLAMA_BASE_URL}/api/generate',
-                            json={'model': 'llama3.2', 'prompt': 'Hello.', 'stream': False},
-                            timeout=300)
-    if _warmup.status_code == 200:
-        print("✅ AI brain is warm and ready.")
+    _ping = requests.get(f'{OLLAMA_BASE_URL}/api/tags', timeout=5)
+    if _ping.status_code == 200:
+        print("✅ Ollama server is reachable. Warming up model...")
+        try:
+            _warmup = requests.post(f'{OLLAMA_BASE_URL}/api/generate',
+                                    json={'model': 'llama3.2', 'prompt': 'Hello.', 'stream': False},
+                                    timeout=120)
+            if _warmup.status_code == 200:
+                print("✅ AI brain is warm and ready.")
+            else:
+                print(f"⚠️  Warmup got status {_warmup.status_code} — LLM commands may be slow.")
+        except Exception as _we:
+            print(f"⚠️  Warmup timed out: {_we} — LLM commands may be slow on first use.")
     else:
-        print(f"⚠️  Warmup got status {_warmup.status_code} — LLM commands may be slow.")
+        print(f"⚠️  Ollama server returned status {_ping.status_code}.")
+        speak("Warning: AI brain returned an unexpected status. Recipe and shopping commands may not work.")
 except Exception as _e:
-    print(f"⚠️  Could not warm up AI brain: {_e}  — LLM commands may be slow or timeout.")
+    print(f"❌ AI brain is UNREACHABLE at {OLLAMA_BASE_URL}: {_e}")
+    speak("Warning: AI brain is offline. Recipe, shopping, and research commands will not work until it is back online.")
 
 
 # --- 4. MATH & EMAIL ---
@@ -218,7 +238,7 @@ def find_recipe(query):
             'model': 'llama3.2', 
             'prompt': f'Correct any obvious speech-to-text typos in the item name. Then, give me a clear, step-by-step recipe for {query} with a list of ingredients and baking/cooking instructions. Keep it concise.', 
             'stream': False
-        }, timeout=180)
+        }, timeout=120)
         print(f"✅ Recipe response received (status {response.status_code}).")
         if response.status_code == 200:
             recipe_text = response.json().get('response', '')
@@ -255,7 +275,7 @@ def find_best_prices(query):
             f"EXCLUDE: powdered, liquid, substitute, easter, artificial"
         )
         print(f"🌐 Contacting Ubuntu server to categorize item: {query}...")
-        cat_resp = requests.post(f'{OLLAMA_BASE_URL}/api/generate', json={'model': 'llama3.2', 'prompt': cat_prompt, 'stream': False}, timeout=180)
+        cat_resp = requests.post(f'{OLLAMA_BASE_URL}/api/generate', json={'model': 'llama3.2', 'prompt': cat_prompt, 'stream': False}, timeout=120)
         print(f"✅ Category response received (status {cat_resp.status_code}).")
         
         corrected_query = query
@@ -325,7 +345,7 @@ def find_best_prices(query):
             'model': 'llama3.2', 
             'prompt': prompt, 
             'stream': False
-        }, timeout=180)
+        }, timeout=60)
         print(f"✅ Shopping report response received (status {response.status_code}).")
         
         if response.status_code == 200:
@@ -388,13 +408,17 @@ def voice_listener():
 
     is_awake = False
     awake_time = 0
-    AWAKE_DURATION = 12  # seconds Jarvis listens after hearing his name
+    AWAKE_DURATION = 25  # seconds Jarvis listens after hearing his name
 
-    action_words = ["search for", "research", "look up", "recipe for", "how to cook", "how to bake", "record", "log", "save", "report", "status", "update", "close", "finish", "end", "stop", "shop for", "buy ", "find prices for "]
+    action_words = ["search for", "research", "look up", "recipe for", "how to cook", "how to bake", "record", "log", "save", "cigar", "report", "status", "update", "close", "finish", "end", "stop", "shop for", "buy ", "find prices for "]
 
     while True:
         data = audio_queue.get()
         if rec.AcceptWaveform(data):
+            # Self-mute: ignore audio while Jarvis is still speaking (prevents self-triggering)
+            if time.time() < _speak_cooldown_until:
+                continue
+
             res = json.loads(rec.Result())
             cmd = res.get('text', '').lower()
             if cmd:
@@ -424,11 +448,19 @@ def voice_listener():
                 # We consume the command, so go back to sleep
                 is_awake = False
 
-                if any(k in cmd for k in ["record", "log", "save"]):
-                    m.add("Manual Cigar Log", user_id="ethan")
+                # ── CLOSE SESSION — checked FIRST so "stop"/"end" can't be swallowed by other branches ──
+                if any(k in cmd for k in ["close", "finish", "end", "stop"]):
+                    speak("Concluding session. Processing your email now.")
+                    send_session_summary()
+                    time.sleep(3)
+                    os._exit(0)
+
+                elif any(k in cmd for k in ["record", "log", "save", "cigar"]):
                     cigar_count_session += 1
                     speak("Logged to memory, sir.")
                     write_state()
+                    # Run memory write in background so voice thread stays responsive
+                    threading.Thread(target=m.add, args=("Manual Cigar Log",), kwargs={"user_id": "ethan"}, daemon=True).start()
 
                 elif any(k in cmd for k in ["report", "status", "update"]):
                     speak(f"Distance to Thor is {current_spatial_dist}. You have {cigar_count_session} logs today.")
@@ -444,6 +476,7 @@ def voice_listener():
                     
                     if query:
                         query = query.replace("jarvis ", "").strip()
+                        speak("On it, sir. Researching now.")
                         threading.Thread(target=conduct_research, args=(query,), daemon=True).start()
                     else:
                         speak("What would you like me to research?")
@@ -459,6 +492,7 @@ def voice_listener():
                     
                     if query:
                         query = query.replace("jarvis ", "").strip()
+                        speak("On it, sir. Contacting the AI chef now. This may take a moment.")
                         threading.Thread(target=find_recipe, args=(query,), daemon=True).start()
                     else:
                         speak("What recipe would you like me to find?")
@@ -474,15 +508,10 @@ def voice_listener():
                     
                     if query:
                         query = query.replace("jarvis ", "").strip()
+                        speak("On it, sir. Searching the web for the best prices. This may take a moment.")
                         threading.Thread(target=find_best_prices, args=(query,), daemon=True).start()
                     else:
                         speak("What would you like me to shop for?")
-
-                elif any(k in cmd for k in ["close", "finish", "end", "stop"]):
-                    speak("Concluding session. Processing your email now.")
-                    send_session_summary()
-                    time.sleep(3)
-                    os._exit(0)
 
 
 threading.Thread(target=voice_listener, daemon=True).start()

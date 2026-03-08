@@ -266,6 +266,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Auto-refresh — rerun every 3 seconds
-time.sleep(3)
+# Auto-refresh — rerun every 1 second
+time.sleep(1)
 st.rerun()
