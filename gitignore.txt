@@ -1,0 +1,42 @@
+# Environments
+.venv/
+venv/
+.env
+.vscode
+.idea
+
+# Runtime state files (generated while Jarvis is running)
+jarvis_state.json
+jarvis_trigger.json
+
+# Cache
+__pycache__/
+*.py[cod]
+
+# Output folders
+runs/
+
+# Large binaries, models, and weights
+*.pt
+*.pth
+*.mdl
+*.ie
+*.dubm
+*.mat
+*.stats
+*.conf
+*.int
+*.fst
+
+# Other generated/large files
+*.mp3
+*.jpg
+*.jpeg
+*.png
+data/
+chroma_db/
+*.tar.gz
+
+# Secrets
+config.py
+.env
