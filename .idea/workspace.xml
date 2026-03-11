@@ -5,55 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acde0be8-2e14-44e3-beb1-1402fb9c71ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/my_jarvis.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ear_check.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jarvis_master.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Physical Sorter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pics/IMG20240601183126.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pics/IMG20240908120249.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/batch_tester.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/check_confusion.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cifar_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cnn_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/colorCNN.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/confusion.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/debug_vision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distance_tracker_eye.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evaluate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/headless_sanity_check.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inspect_color.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inspect_pro.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/multi_brain_master.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_test_images/my_pet_photo10.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_test_images/my_pet_photo11.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_test_images/my_pet_photo13.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_test_images/my_pet_photo2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_test_images/my_pet_photo3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_test_images/my_pet_photo4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_test_images/my_pet_photo5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_test_images/my_pet_photo6.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_test_images/my_pet_photo7.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_test_images/my_pet_photo8.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_test_images/my_pet_photo9.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_test_images/truck10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pixel_eye.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sanity_check.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/the_real_eye.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train_cifar.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train_cigar_eye.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train_pro.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/visualize.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/visualize_pro.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jarvis_master.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jarvis_master.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chroma_db/chroma.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/chroma_db/chroma.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +36,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -92,44 +51,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.Ear_check.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Jarvis_master.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.batch_tester.executor&quot;: &quot;Run&quot;,
-    &quot;Python.check_confusion.executor&quot;: &quot;Run&quot;,
-    &quot;Python.colorCNN.executor&quot;: &quot;Run&quot;,
-    &quot;Python.debug_vision.executor&quot;: &quot;Run&quot;,
-    &quot;Python.distance_tracker_eye.executor&quot;: &quot;Run&quot;,
-    &quot;Python.find_voices.executor&quot;: &quot;Run&quot;,
-    &quot;Python.headless_sanity_check.executor&quot;: &quot;Run&quot;,
-    &quot;Python.inspect_pro.executor&quot;: &quot;Run&quot;,
-    &quot;Python.multi_brain_master.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pixel_eye.executor&quot;: &quot;Run&quot;,
-    &quot;Python.sanity_check.executor&quot;: &quot;Run&quot;,
-    &quot;Python.the_real_eye.executor&quot;: &quot;Run&quot;,
-    &quot;Python.train_cifar.executor&quot;: &quot;Run&quot;,
-    &quot;Python.train_cigar_eye.executor&quot;: &quot;Run&quot;,
-    &quot;Python.train_pro.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.visualize_pro.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/manrig-13/PycharmProjects/my_jarvis&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.Ear_check.executor": "Run",
+    "Python.Jarvis_master.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.batch_tester.executor": "Run",
+    "Python.check_confusion.executor": "Run",
+    "Python.colorCNN.executor": "Run",
+    "Python.debug_vision.executor": "Run",
+    "Python.distance_tracker_eye.executor": "Run",
+    "Python.find_voices.executor": "Run",
+    "Python.headless_sanity_check.executor": "Run",
+    "Python.inspect_pro.executor": "Run",
+    "Python.multi_brain_master.executor": "Run",
+    "Python.pixel_eye.executor": "Run",
+    "Python.sanity_check.executor": "Run",
+    "Python.the_real_eye.executor": "Run",
+    "Python.train_cifar.executor": "Run",
+    "Python.train_cigar_eye.executor": "Run",
+    "Python.train_pro.executor": "Debug",
+    "Python.visualize_pro.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "ai.playground.ignore.import.keys.banner.in.settings": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/home/mobile64/Python Projects/Streamlit",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -176,8 +139,9 @@
         <env name="GMAIL_USER" value="ether2803@gmail.com" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (my_jarvis)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -283,8 +247,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.30387.173" />
-        <option value="bundled-python-sdk-4762d8aabb82-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.30387.173" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.31033.139" />
+        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
       </set>
     </attachedChunks>
   </component>
@@ -308,6 +272,7 @@
       <workItem from="1771298756675" duration="4001000" />
       <workItem from="1771384641355" duration="7559000" />
       <workItem from="1771469713549" duration="3065000" />
+      <workItem from="1773009955682" duration="11767000" />
     </task>
     <servers />
   </component>
@@ -315,24 +280,24 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/my_jarvis$colorCNN.coverage" NAME="colorCNN Coverage Results" MODIFIED="1771046413312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$train_pro.coverage" NAME="train_pro Coverage Results" MODIFIED="1771163636112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$Jarvis_master.coverage" NAME="Jarvis_master Coverage Results" MODIFIED="1771472572476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$train_cigar_eye.coverage" NAME="train_cigar_eye Coverage Results" MODIFIED="1771212905842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/my_jarvis$debug_vision.coverage" NAME="debug_vision Coverage Results" MODIFIED="1771091999755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$visualize_pro.coverage" NAME="visualize_pro Coverage Results" MODIFIED="1771112521450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$train_cifar.coverage" NAME="train_cifar Coverage Results" MODIFIED="1771045097423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$sanity_check.coverage" NAME="sanity_check Coverage Results" MODIFIED="1771209873976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$app.coverage" NAME="app Coverage Results" MODIFIED="1771019777526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$train_pro.coverage" NAME="train_pro Coverage Results" MODIFIED="1771163636112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$train_cigar_eye.coverage" NAME="train_cigar_eye Coverage Results" MODIFIED="1771212905842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/my_jarvis$batch_tester.coverage" NAME="batch_tester Coverage Results" MODIFIED="1771173090018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$pixel_eye.coverage" NAME="pixel_eye Coverage Results" MODIFIED="1771177468196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$multi_brain_master.coverage" NAME="multi_brain_master Coverage Results" MODIFIED="1771219933347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$distance_tracker_eye.coverage" NAME="distance_tracker_eye Coverage Results" MODIFIED="1771196148986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$headless_sanity_check.coverage" NAME="headless_sanity_check Coverage Results" MODIFIED="1771211752740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$find_voices.coverage" NAME="find_voices Coverage Results" MODIFIED="1771195536860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$Jarvis_master.coverage" NAME="Jarvis_master Coverage Results" MODIFIED="1773019765563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/my_jarvis$Ear_check.coverage" NAME="Ear_check Coverage Results" MODIFIED="1771220583744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$check_confusion.coverage" NAME="check_confusion Coverage Results" MODIFIED="1771116603153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$colorCNN.coverage" NAME="colorCNN Coverage Results" MODIFIED="1771046413312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$multi_brain_master.coverage" NAME="multi_brain_master Coverage Results" MODIFIED="1771219933347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/my_jarvis$inspect_pro.coverage" NAME="inspect_pro Coverage Results" MODIFIED="1771091675131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/my_jarvis$the_real_eye.coverage" NAME="the_real_eye Coverage Results" MODIFIED="1771176258153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/my_jarvis$find_voices.coverage" NAME="find_voices Coverage Results" MODIFIED="1771195536860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$visualize_pro.coverage" NAME="visualize_pro Coverage Results" MODIFIED="1771112521450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$app.coverage" NAME="app Coverage Results" MODIFIED="1771019777526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$distance_tracker_eye.coverage" NAME="distance_tracker_eye Coverage Results" MODIFIED="1771196148986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$pixel_eye.coverage" NAME="pixel_eye Coverage Results" MODIFIED="1771177468196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$sanity_check.coverage" NAME="sanity_check Coverage Results" MODIFIED="1771209873976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$train_cifar.coverage" NAME="train_cifar Coverage Results" MODIFIED="1771045097423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$headless_sanity_check.coverage" NAME="headless_sanity_check Coverage Results" MODIFIED="1771211752740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_jarvis$check_confusion.coverage" NAME="check_confusion Coverage Results" MODIFIED="1771116603153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
