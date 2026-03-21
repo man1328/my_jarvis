@@ -27,6 +27,14 @@ runs/
 *.conf
 *.int
 *.fst
+*.raw
+*.carpa
+*.zip
+
+# Vosk / speech model directories (too large for git)
+model/
+downloads/
+My_AI_model/
 
 # Other generated/large files
 *.mp3
