@@ -39,4 +39,3 @@ chroma_db/
 
 # Secrets
 config.py
-.env

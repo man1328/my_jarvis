@@ -33,14 +33,9 @@ config = {
 
 # 2. Initialize Memory with the local config
 m = Memory.from_config(config)
-
 print("🧠 Jarvis Mind initialized OFFLINE. No API Key required.")
 
-# 1. Start the Jarvis Mind (Mem0)
-# This creates a local memory store in your project folder
-m = Memory()
-
-# 2. LOAD BOTH BRAINS (General + Cigar)
+# 3. LOAD BOTH BRAINS (General + Cigar)
 general_model = YOLO('yolov8n.pt')
 cigar_model = YOLO('runs/detect/jarvis_cigar_model/weights/best.pt')
 
@@ -56,8 +51,8 @@ def run_jarvis_ultra():
         if not ret: break
 
         # Run both AI models
-        gen_res = general_model.predict(source=frame, device='cpu', verbose=False)
-        cigar_res = cigar_model.predict(source=frame, device='cpu', verbose=False)
+        gen_res = general_model.predict(source=frame, device='cuda', verbose=False)
+        cigar_res = cigar_model.predict(source=frame, device='cuda', verbose=False)
 
         current_time = time.time()
         annotated_frame = gen_res[0].plot()

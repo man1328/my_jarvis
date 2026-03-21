@@ -55,9 +55,6 @@ class App:
         self.draw.ellipse([x1, y1, x2, y2], fill=0)
 
     def predict(self, event):
-        classes = ["0", "1", "2", "3", "4",
-                   "5", "6", "7", "8", "9"]
-
         # 1. Process the image
         img_inverted = ImageOps.invert(self.image)
         bbox = img_inverted.getbbox()
@@ -90,7 +87,7 @@ class App:
             # 4. Display Results
             result_text = "Analysis:\n"
             for i in range(3):
-                name = classes[top_indices[i]]
+                name = self.classes[top_indices[i]]
                 conf = top_probs[i].item()
                 result_text += f"{i + 1}. {name} ({conf:.1%})\n"
 

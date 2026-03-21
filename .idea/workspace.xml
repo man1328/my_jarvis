@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acde0be8-2e14-44e3-beb1-1402fb9c71ea" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jarvis_master.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jarvis_master.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chroma_db/11fc228c-0b34-475f-853d-9706b3ebd48b/length.bin" beforeDir="false" afterPath="$PROJECT_DIR$/chroma_db/11fc228c-0b34-475f-853d-9706b3ebd48b/length.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chroma_db/chroma.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/chroma_db/chroma.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/README" beforeDir="false" afterPath="$PROJECT_DIR$/model/README" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="188" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -51,48 +54,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.Ear_check.executor": "Run",
-    "Python.Jarvis_master.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.batch_tester.executor": "Run",
-    "Python.check_confusion.executor": "Run",
-    "Python.colorCNN.executor": "Run",
-    "Python.debug_vision.executor": "Run",
-    "Python.distance_tracker_eye.executor": "Run",
-    "Python.find_voices.executor": "Run",
-    "Python.headless_sanity_check.executor": "Run",
-    "Python.inspect_pro.executor": "Run",
-    "Python.multi_brain_master.executor": "Run",
-    "Python.pixel_eye.executor": "Run",
-    "Python.sanity_check.executor": "Run",
-    "Python.the_real_eye.executor": "Run",
-    "Python.train_cifar.executor": "Run",
-    "Python.train_cigar_eye.executor": "Run",
-    "Python.train_pro.executor": "Debug",
-    "Python.visualize_pro.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "ai.playground.ignore.import.keys.banner.in.settings": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/mobile64/Python Projects/Streamlit",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.Ear_check.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Jarvis_master.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.batch_tester.executor&quot;: &quot;Run&quot;,
+    &quot;Python.check_confusion.executor&quot;: &quot;Run&quot;,
+    &quot;Python.colorCNN.executor&quot;: &quot;Run&quot;,
+    &quot;Python.debug_vision.executor&quot;: &quot;Run&quot;,
+    &quot;Python.distance_tracker_eye.executor&quot;: &quot;Run&quot;,
+    &quot;Python.find_voices.executor&quot;: &quot;Run&quot;,
+    &quot;Python.headless_sanity_check.executor&quot;: &quot;Run&quot;,
+    &quot;Python.inspect_pro.executor&quot;: &quot;Run&quot;,
+    &quot;Python.multi_brain_master.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pixel_eye.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sanity_check.executor&quot;: &quot;Run&quot;,
+    &quot;Python.the_real_eye.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train_cifar.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train_cigar_eye.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train_pro.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.visualize_pro.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/mobile64/Python Projects/Streamlit&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -273,6 +276,7 @@
       <workItem from="1771384641355" duration="7559000" />
       <workItem from="1771469713549" duration="3065000" />
       <workItem from="1773009955682" duration="11767000" />
+      <workItem from="1773256349455" duration="10643000" />
     </task>
     <servers />
   </component>

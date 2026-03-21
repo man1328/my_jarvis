@@ -261,7 +261,7 @@ st.markdown("---")
 # ── Footer / auto-refresh ─────────────────────────────────────────────────────
 st.markdown(
     '<div style="text-align:center;color:#003344;font-size:0.65rem;letter-spacing:0.2em;">'
-    'AUTO-REFRESH EVERY 3 SECONDS  ·  JARVIS v2.0'
+    'AUTO-REFRESH EVERY 1 SECOND  ·  JARVIS v2.0'
     '</div>',
     unsafe_allow_html=True,
 )
